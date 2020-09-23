@@ -6,7 +6,7 @@ describe('given the component is rendered', () => {
 
   test('then title is displayed', () => {
     Given.ComponentIsRendered();
-    Then.TitleIsDisplayed();
+    Then.GridIsDisplayed();
   });
 
 });
@@ -18,8 +18,10 @@ class Given {
 }
 
 class Then {
-  static TitleIsDisplayed() {
-    const title = screen.getByText('X and O');
-    expect(title).toBeInTheDocument();
+  static GridIsDisplayed() {
+    const xs = screen.getAllByText('x');
+    expect(xs.length).toBe(5);
+    const os = screen.getAllByText('o');
+    expect(os.length).toBe(4);
   }
 }
