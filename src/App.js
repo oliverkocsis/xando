@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Grid from './Grid';
+import Grid from './components/Grid';
 
 function App() {
   const spaces = ['x', 'o', 'x', 'o', 'x', 'o', 'x', 'o', 'x'];

@@ -3,3 +3,7 @@
   max-width: 33rem;
   margin: auto;
 }
+
+.App p {
+  margin-bottom: 5rem;
+}
