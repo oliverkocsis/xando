@@ -13,13 +13,14 @@ export const initialState = {
 export function reducer(state = initialState, action) {
   console.debug(state);
   console.debug(action);
-  let newState = fromJS(state);
+  const immutableState = fromJS(state);
+  let newState;
   switch (action?.type) {
     case actions.MARK:
-      newState = reduceMark(newState, action);
+      newState = reduceMark(immutableState, action);
       break;
     default:
-      newState = newState;
+      newState = immutableState;
       break;
   }
   const newStateObject = newState.toJS();
