@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-describe('given the component is rendered', () => {
+describe.skip('given the component is rendered', () => {
 
   test('then title is displayed', () => {
     Given.ComponentIsRendered();
