@@ -1,15 +1,13 @@
 import * as actions from './actionTypes';
+import * as marks from '../game/marks';
 import { fromJS } from 'immutable';
-
-export const MARK_X = 'x';
-export const MARK_O = 'o';
 
 const STATE_MARKS = 'marks';
 const STATE_MARK = 'mark';
 
 export const initialState = {
-  mark: MARK_X,
-  marks: ['', '', '', '', '', '', '', '', '',],
+  mark: marks.X,
+  marks: new Array(9).fill(marks.EMPTY),
 }
 
 export function reducer(state = initialState, action) {
@@ -37,5 +35,5 @@ function reduceMark(state, action) {
 }
 
 function nextMark(mark) {
-  return mark === MARK_X ? MARK_O : MARK_X;
+  return mark === marks.X ? marks.O : marks.X;
 }

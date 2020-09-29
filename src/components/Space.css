@@ -1,6 +1,42 @@
 .Space {
   text-align: center;
   vertical-align: middle;
-  height: 11rem;
-  font-size: 7rem;
+  font-size: 4rem;
+  padding: 1rem;
+  min-width: 5rem;
+}
+
+@media (min-width: 576px) {
+  .Space {
+    font-size: 4rem;
+    padding: 1rem;
+    min-width: 5rem;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .Space {
+    font-size: 8rem;
+    padding: 1rem;
+    min-width: 9rem;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .Space {
+    font-size: 8rem;
+    padding: 1rem;
+    min-width: 9rem;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .Space {
+    font-size: 8rem;
+    padding: 1rem;
+    min-width: 9rem;
+  }
 }

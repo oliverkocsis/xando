@@ -1,4 +1,5 @@
-import { reducer, initialState, MARK_X, MARK_O } from './reducers';
+import { reducer, initialState } from './reducers';
+import * as marks from '../game/marks';
 import * as actions from './actions';
 
 describe('when store is initialized', () => {
@@ -61,7 +62,7 @@ class When {
   }
 
   static MarkActionIsDispatched(state, index) {
-    return reducer(state, actions.Mark(index));
+    return reducer(state, actions.mark(index));
   }
 
 }
@@ -69,11 +70,11 @@ class When {
 class Then {
 
   static MarkIsX(state) {
-    expect(state.mark).toBe(MARK_X);
+    expect(state.mark).toBe(marks.X);
   }
 
   static MarkIsO(state) {
-    expect(state.mark).toBe(MARK_O);
+    expect(state.mark).toBe(marks.O);
   }
 
   static MarksAreEmpty(state) {
@@ -82,7 +83,7 @@ class Then {
 
   static SpaceIsMarkedAtIndex(state, index) {
     const mark = state.marks[index];
-    expect(mark).toBe(MARK_X);
+    expect(mark).toBe(marks.X);
   }
 
 }

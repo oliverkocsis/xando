@@ -1,6 +1,6 @@
 import * as actions from './actionTypes';
 
-export function Mark(index) {
+export function mark(index) {
   return {
     type: actions.MARK,
     index,
