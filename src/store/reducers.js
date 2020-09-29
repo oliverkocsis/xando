@@ -18,6 +18,9 @@ export function reducer(state = initialState, action) {
     case actions.MARK:
       newState = reduceMark(newState, action);
       break;
+    default:
+      newState = newState;
+      break;
   }
   const newStateObject = newState.toJS();
   console.debug(newStateObject);
