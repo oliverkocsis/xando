@@ -3,31 +3,32 @@ import { connect } from 'react-redux';
 import './Space.css';
 import * as marks from '../game/marks';
 import * as actions from '../store/actions';
-import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
-import CloseIcon from '@material-ui/icons/Close';
-import BugReportIcon from '@material-ui/icons/BugReport';
 
-export const TEST_ID = "Space"
+export const TEST_ID = "Space";
+export const TEST_ID__ = "_";
+export const TEST_ID_X = "X";
+export const TEST_ID_O = "O";
 
 function Space(props) {
   const index = props.index;
   const mark = props.mark;
-  const icon = getIcon(mark);
+  const display = displayMark(mark);
   const borderStyle = getBorderStyle(index);
 
-  return <div className="Space" data-testid={TEST_ID} style={borderStyle} onClick={() => props.dispatch(index)}>{icon}</div>;
+  return <div className="Space" data-testid={TEST_ID} style={borderStyle} onClick={() => props.dispatch(index)}>{display}</div>;
 }
 
-function getIcon(mark) {
+function displayMark(mark) {
   switch (mark) {
-    case marks.EMPTY:
-      return <span data-testid={marks.EMPTY} >&nbsp;</span>;
+    case marks._:
+      return <span data-testid={TEST_ID__}>&nbsp;</span>;
     case marks.X:
-      return <span data-testid={marks.X} ><CloseIcon fontSize="inherit" /></span>;
+      return <span data-testid={TEST_ID_X}>X</span>;
     case marks.O:
-      return <span data-testid={marks.O} ><RadioButtonUncheckedIcon fontSize="inherit" /></span>;
+      return <span data-testid={TEST_ID_O}>O</span>;
     default:
-      return <BugReportIcon fontSize="inherit" />;
+      console.error(`Unknown mark: ${mark}`);
+      return <span>~</span>;
   }
 }
 
