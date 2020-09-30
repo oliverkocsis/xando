@@ -1,27 +1,49 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent, getByTestId } from '@testing-library/react';
 import App from './App';
+import { TEST_ID, TEST_ID_X, TEST_ID_O } from './components/Space';
 
-describe.skip('given the component is rendered', () => {
+describe('given the app is rendered', () => {
 
-  test('then title is displayed', () => {
-    Given.ComponentIsRendered();
-    Then.GridIsDisplayed();
+  beforeEach(() => {
+    render(<App />);
   });
 
+  test('then space is marked as X', () => {
+    const index = 0;
+    clickOnSpace(index);
+    expectMarkXIsDisplayed(index);
+  });
+
+  test('then space is marked as O', () => {
+    const index = 1;
+    clickOnSpace(index);
+    expectMarkOIsDisplayed(index);
+  });
+
+  const spaceAtIndex = (index) => {
+    const spaces = screen.queryAllByTestId(TEST_ID);
+    const space = spaces[index];
+    return space;
+  }
+
+  const clickOnSpace = (index) => {
+    const space = spaceAtIndex(index);
+    fireEvent.click(space);
+  }
+
+  const expectMarkXIsDisplayed = (index) => {
+    expectMarkIsDisplayed(index, TEST_ID_X);
+  }
+
+  const expectMarkOIsDisplayed = (index) => {
+    expectMarkIsDisplayed(index, TEST_ID_O);
+  }
+
+  const expectMarkIsDisplayed = (index, testId) => {
+    const space = spaceAtIndex(index);
+    const mark = getByTestId(space, testId);
+    expect(mark).toBeInTheDocument();
+  }
+
 });
-
-class Given {
-  static ComponentIsRendered() {
-    render(<App />);
-  }
-}
-
-class Then {
-  static GridIsDisplayed() {
-    const xs = screen.getAllByText('x');
-    expect(xs.length).toBe(5);
-    const os = screen.getAllByText('o');
-    expect(os.length).toBe(4);
-  }
-}
