@@ -7,7 +7,7 @@ const STATE_MARK = 'mark';
 
 export const initialState = {
   mark: marks.X,
-  marks: new Array(9).fill(marks.EMPTY),
+  marks: new Array(9).fill(marks._),
 }
 
 export function reducer(state = initialState, action) {
