@@ -6,3 +6,9 @@ export function mark(index) {
     index,
   }
 }
+
+export function reset() {
+  return {
+    type: actions.RESET,
+  }
+}

@@ -4,9 +4,14 @@ import './Layout.css';
 import Grid from './Grid';
 
 function Layout(props) {
+  let winner;
+  if (props.winner) {
+    winner = <p>{props.winner}</p>
+  }
   return (
     <div className="Layout">
       <Grid spaces={props.marks} />
+      {winner}
     </div>
   );
 }
@@ -14,6 +19,7 @@ function Layout(props) {
 const mapStateToProps = (state) => {
   return {
     marks: state.marks,
+    winner: state.winner,
   }
 }
 

@@ -70,6 +70,27 @@ export class Counter {
     return won;
   }
 
+  whoDidWin() {
+    let winner;
+    winner = this.whoDidWinHorizontally();
+    if (winner) {
+      return winner;
+    }
+    winner = this.whoDidWinVertically();
+    if (winner) {
+      return winner;
+    }
+    winner = this.whoDidWinDiagonalForward();
+    if (winner) {
+      return winner;
+    }
+    winner = this.whoDidWinDiagonalBackward();
+    if (winner) {
+      return winner;
+    }
+    return null;
+  }
+
   _calculateIndexFor(row, column) {
     return row * this.width + column;
   }

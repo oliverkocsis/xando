@@ -10,7 +10,7 @@ describe('given the store is empty', () => {
   let store;
   let random;
 
-  beforeAll(() => {
+  beforeEach(() => {
     store = createMockStoreWithState();
     random = Math.floor(Math.random() * 100);
   });
@@ -33,10 +33,16 @@ describe('given the store is empty', () => {
     expectMarkXIsNotDisplayed();
   });
 
-  test('gven component is rendered when clicking on component then mark action is dispatched', () => {
-    renderComponentWithMark(marks.X);
+  test('given component is rendered and the mark is empty when clicking on component then mark action is dispatched', () => {
+    renderComponentWithMark(marks._);
     clickOnComponent();
     expectMarkActionIsDispatched();
+  });
+
+  test('given component is rendered the mark is not empty when clicking on component then mark action is not dispatched', () => {
+    renderComponentWithMark(marks.X);
+    clickOnComponent();
+    expectMarkActionIsNotDispatched();
   });
 
   const renderComponentWithMark = (mark) => {
@@ -71,6 +77,11 @@ describe('given the store is empty', () => {
   const expectMarkActionIsDispatched = () => {
     const dispatched = store.dispatch.mock.calls[0];
     expect(dispatched[0]).toStrictEqual(actions.mark(random));
+  }
+
+  const expectMarkActionIsNotDispatched = () => {
+    const dispatched = store.dispatch.mock.calls[0];
+    expect(dispatched).toBeUndefined();
   }
 
 });

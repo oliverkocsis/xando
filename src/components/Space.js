@@ -15,7 +15,13 @@ function Space(props) {
   const display = displayMark(mark);
   const borderStyle = getBorderStyle(index);
 
-  return <div className="Space" data-testid={TEST_ID} style={borderStyle} onClick={() => props.dispatch(index)}>{display}</div>;
+  const onClick = () => {
+    if (mark === marks._) {
+      props.dispatch(index)
+    }
+  }
+
+  return <div className="Space" data-testid={TEST_ID} style={borderStyle} onClick={onClick}>{display}</div>;
 }
 
 function displayMark(mark) {
