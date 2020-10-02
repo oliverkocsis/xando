@@ -50,12 +50,6 @@ function reduceMark(state, action) {
   return state;
 }
 
-function reduceWin(state, action) {
-  const mark = action.mark;
-  state = state.set(STATE_WINNER, mark);
-  return state;
-}
-
 function reduceReset(state, action) {
   return fromJS(initialState);
 }

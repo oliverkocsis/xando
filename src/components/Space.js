@@ -12,11 +12,12 @@ export const TEST_ID_O = "O";
 function Space(props) {
   const index = props.index;
   const mark = props.mark;
+  const enabled = props.enabled;
   const display = displayMark(mark);
   const borderStyle = getBorderStyle(index);
 
   const onClick = () => {
-    if (mark === marks._) {
+    if (enabled && mark === marks._) {
       props.dispatch(index)
     }
   }
