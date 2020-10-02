@@ -1,4 +1,6 @@
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
 }
 
@@ -8,4 +10,21 @@ body {
 
 .Layout {
   text-align: center;
+}
+
+.Winner {
+  margin: auto;
+  margin-top: 1em;
+  text-align: center;
+  width: 3em;
+  height: 3em;
+}
+
+.Reset {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }

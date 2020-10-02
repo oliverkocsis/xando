@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './Space.css';
+import X from './X';
+import O from './O';
+import _ from './_';
 import * as marks from '../game/marks';
 import * as actions from '../store/actions';
 
 export const TEST_ID = "Space";
-export const TEST_ID__ = "_";
-export const TEST_ID_X = "X";
-export const TEST_ID_O = "O";
 
 function Space(props) {
   const index = props.index;
@@ -28,11 +28,11 @@ function Space(props) {
 function displayMark(mark) {
   switch (mark) {
     case marks._:
-      return <span data-testid={TEST_ID__}>&nbsp;</span>;
+      return <_ />;
     case marks.X:
-      return <span data-testid={TEST_ID_X}>X</span>;
+      return <X />;
     case marks.O:
-      return <span data-testid={TEST_ID_O}>O</span>;
+      return <O />;
     default:
       console.error(`Unknown mark: ${mark}`);
       return <span>~</span>;

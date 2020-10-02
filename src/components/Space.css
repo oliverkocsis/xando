@@ -5,7 +5,7 @@
   font-weight: 500;
   width: 75px;
   height: 75px;
-  font-size: 50px;
+  padding: 10px;
 }
 
 /* Extra small devices (phones, 600px and down) */
@@ -13,7 +13,7 @@
   .Space {
     width: 100px;
     height: 100px;
-    font-size: 75px;
+    padding: 15px;
   }
 }
 
@@ -22,7 +22,7 @@
   .Space {
     width: 150px;
     height: 150px;
-    font-size: 120px;
+    padding: 20px;
   }
 }
 
@@ -31,24 +31,6 @@
   .Space {
     width: 200px;
     height: 200px;
-    font-size: 150px;
-  }
-}
-
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px)and (min-height: 992px) {
-  .Space {
-    width: 300px;
-    height: 300px;
-    font-size: 240px;
-  }
-}
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) and (min-height: 1200px) {
-  .Space {
-    width: 350px;
-    height: 350px;
-    font-size: 270px;
+    padding: 25px;
   }
 }

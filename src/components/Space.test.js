@@ -1,7 +1,9 @@
 import React from 'react';
 import { createMockStoreWithState, renderComponentWithStore } from './components';
 import { screen, fireEvent } from '@testing-library/react';
-import Space, { TEST_ID, TEST_ID_X, TEST_ID_O } from './Space';
+import Space, { TEST_ID } from './Space';
+import { TEST_ID as TEST_ID_X } from './X';
+import { TEST_ID as TEST_ID_O } from './O';
 import * as marks from '../game/marks';
 import * as actions from '../store/actions';
 

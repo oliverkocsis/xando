@@ -5,19 +5,32 @@ import Grid from './Grid';
 import Fab from '@material-ui/core/Fab';
 import ReplayIcon from '@material-ui/icons/Replay';
 import * as actions from '../store/actions';
+import * as marks from '../game/marks';
+import X from './X';
+import O from './O';
 
 function Layout(props) {
   let winner;
   let reset;
   if (props.winner) {
-    winner = <p>{props.winner}</p>
-    reset = <Fab color="primary" aria-label="add" onClick={props.dispatch}><ReplayIcon /></Fab>
+    switch (props.winner) {
+      case marks.X:
+        winner = <div className="Winner"><X /></div>;
+        break;
+      case marks.O:
+        winner = <div className="Winner"><O /></div>;
+        break;
+      default:
+        winner = null;
+        break;
+    }
+
+    reset = <div className="Reset"><Fab color="primary" aria-label="add" onClick={props.dispatch}><ReplayIcon /></Fab></div >
   }
   const enabled = winner === undefined;
   return (
     <div className="Layout">
       <Grid spaces={props.marks} enabled={enabled} />
-      {winner}
       {reset}
     </div>
   );
