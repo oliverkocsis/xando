@@ -21,32 +21,48 @@ describe('given the store is empty', () => {
     expectMarkOIsNotDisplayed();
   });
 
-  test('given the mark is X when the component is rendered then mark X is displayed', () => {
+  test('given the mark is X when the component is rendered then only mark X is displayed', () => {
     renderComponentWithMark(marks.X);
     expectMarkXIsDisplayed();
     expectMarkOIsNotDisplayed();
   });
 
-  test('given the mark is O when the component is rendered then mark O is displayed', () => {
+  test('given the mark is O when the component is rendered then only mark O is displayed', () => {
     renderComponentWithMark(marks.O);
     expectMarkOIsDisplayed();
     expectMarkXIsNotDisplayed();
   });
 
-  test('given component is rendered and the mark is empty when clicking on component then mark action is dispatched', () => {
-    renderComponentWithMark(marks._);
+  test('given component is rendered and the mark is empty and the component is enabled when clicking on component then mark action is dispatched', () => {
+    renderComponentWithMarkAndEnabled(marks._, true);
     clickOnComponent();
     expectMarkActionIsDispatched();
   });
 
-  test('given component is rendered the mark is not empty when clicking on component then mark action is not dispatched', () => {
-    renderComponentWithMark(marks.X);
+  test('given component is rendered and the mark is empty and the component is not enabled when clicking on component then mark action is not dispatched', () => {
+    renderComponentWithMarkAndEnabled(marks._, false);
+    clickOnComponent();
+    expectMarkActionIsNotDispatched();
+  });
+
+  test('given component is rendered the mark is not empty and the component is enabled when clicking on component then mark action is not dispatched', () => {
+    renderComponentWithMarkAndEnabled(marks.X, true);
+    clickOnComponent();
+    expectMarkActionIsNotDispatched();
+  });
+
+  test('given component is rendered the mark is not empty and the component is not enabled when clicking on component then mark action is not dispatched', () => {
+    renderComponentWithMarkAndEnabled(marks.X, false);
     clickOnComponent();
     expectMarkActionIsNotDispatched();
   });
 
   const renderComponentWithMark = (mark) => {
-    return renderComponentWithStore(<Space index={random} mark={mark} />, store);
+    return renderComponentWithMarkAndEnabled(mark, true);
+  }
+
+  const renderComponentWithMarkAndEnabled = (mark, enabled) => {
+    return renderComponentWithStore(<Space index={random} mark={mark} enabled={enabled} />, store);
   }
 
   const expectMarkXIsDisplayed = () => {
