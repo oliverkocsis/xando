@@ -44,13 +44,13 @@ function getBorderStyle(index) {
   if (index / 3 < 2) {
     style = {
       ...style,
-      borderBottom: '1px solid #d8dee9',
+      borderBottom: '5px solid black',
     }
   }
   if (index % 3 < 2) {
     style = {
       ...style,
-      borderRight: '1px solid #d8dee9',
+      borderRight: '5px solid black',
     }
   }
   return style;
