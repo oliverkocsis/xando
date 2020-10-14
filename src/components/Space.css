@@ -9,28 +9,28 @@
 }
 
 /* Extra small devices (phones, 600px and down) */
-@media only screen and (min-width: 350px) and (min-height: 350px) {
+@media only screen and (min-width: 300px) and (min-height: 300px) {
   .Space {
-    width: 100px;
-    height: 100px;
-    padding: 15px;
+    width: 70px;
+    height: 70px;
+    padding: 10px;
   }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) and (min-height: 600px) {
   .Space {
-    width: 150px;
-    height: 150px;
+    width: 140px;
+    height: 140px;
     padding: 20px;
   }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) and (min-height: 768px) {
+@media only screen and (min-width: 900px) and (min-height: 900px) {
   .Space {
     width: 200px;
     height: 200px;
-    padding: 25px;
+    padding: 30px;
   }
 }
