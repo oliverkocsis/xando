@@ -41,16 +41,18 @@ export function reducer(state = initialState, action) {
 function reduceMark(state, action) {
   const index = action.index;
   const mark = state.get(STATE_MARK);
-  let marks = state.get(STATE_MARKS);
-  marks = marks.set(index, mark);
+  let marksState = state.get(STATE_MARKS);
+  marksState = marksState.set(index, mark);
   state = state.set(STATE_MARK, nextMark(mark));
-  state = state.set(STATE_MARKS, marks);
-  const counter = new Counter(marks.toArray(), 3, 3, 3);
+  state = state.set(STATE_MARKS, marksState);
+  const counter = new Counter(marksState.toArray(), 3, 3, 3);
   const winner = counter.whoDidWin();
   if (winner) {
     console.log(`winner: ${winner}`);
     analytics.logEvent('winner', { winner });
     state = state.set(STATE_WINNER, winner);
+  } else if (isFull(marksState)) {
+    state = state.set(STATE_WINNER, marks._);
   }
   return state;
 }
@@ -61,4 +63,8 @@ function reduceReset(state, action) {
 
 function nextMark(mark) {
   return mark === marks.X ? marks.O : marks.X;
+}
+
+function isFull(list) {
+  return list.every(mark => mark === marks.X || mark === marks.O);
 }

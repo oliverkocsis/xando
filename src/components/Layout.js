@@ -12,7 +12,7 @@ import O from './O';
 function Layout(props) {
   let winner;
   let reset;
-  if (props.winner) {
+  if (props.winner != null) {
     switch (props.winner) {
       case marks.X:
         winner = <div className="Winner"><X /></div>;
