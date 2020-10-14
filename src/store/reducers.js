@@ -2,6 +2,7 @@ import * as actions from './actionTypes';
 import * as marks from '../game/marks';
 import { Counter } from '../game/counter';
 import { fromJS } from 'immutable';
+import analytics from '../analytics';
 
 const STATE_MARKS = 'marks';
 const STATE_MARK = 'mark';
@@ -16,6 +17,9 @@ export const initialState = {
 export function reducer(state = initialState, action) {
   console.debug(state);
   console.debug(action);
+  if (action && action.type) {
+    analytics.logEvent('action', action);
+  }
   const immutableState = fromJS(state);
   let newState;
   switch (action?.type) {
@@ -44,7 +48,8 @@ function reduceMark(state, action) {
   const counter = new Counter(marks.toArray(), 3, 3, 3);
   const winner = counter.whoDidWin();
   if (winner) {
-    console.log(`Winner: ${winner}`);
+    console.log(`winner: ${winner}`);
+    analytics.logEvent('winner', { winner });
     state = state.set(STATE_WINNER, winner);
   }
   return state;
