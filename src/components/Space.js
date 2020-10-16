@@ -41,16 +41,16 @@ function displayMark(mark) {
 
 function getBorderStyle(index) {
   let style = {}
-  if (index / 3 < 2) {
+  if (index / 3 >= 2) {
     style = {
       ...style,
-      borderBottom: '5px solid black',
+      borderBottom: 'none',
     }
   }
-  if (index % 3 < 2) {
+  if (index % 3 == 2) {
     style = {
       ...style,
-      borderRight: '5px solid black',
+      borderRight: 'none',
     }
   }
   return style;

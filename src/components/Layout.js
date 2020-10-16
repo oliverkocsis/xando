@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
+import { Container } from '@material-ui/core';
 import './Layout.css';
 import Grid from './Grid';
 import Fab from '@material-ui/core/Fab';
@@ -29,10 +30,10 @@ function Layout(props) {
   }
   const enabled = winner === undefined;
   return (
-    <div className="Layout">
+    <Container fixed>
       <Grid spaces={props.marks} enabled={enabled} />
       {reset}
-    </div>
+    </Container>
   );
 }
 

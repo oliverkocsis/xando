@@ -1,15 +1,19 @@
 .Space {
   text-align: center;
   vertical-align: middle;
-  font-family: 'Roboto Mono', monospace;
-  font-weight: 500;
-  width: 75px;
-  height: 75px;
-  padding: 10px;
+  color: #333;
+  border-right: 1px solid #333;
+  border-bottom: 1px solid #333;
+  border-top: none;
+  border-left: none;
 }
 
-.Mark {
-  animation: grow .25s ease-in;
+.Space path {
+  fill: #333;
+}
+
+.Space .Mark {
+  animation: grow 0.25s ease-in;
 }
 
 @keyframes grow {
@@ -26,29 +30,20 @@
   }
 }
 
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (min-width: 300px) and (min-height: 300px) {
+@media (orientation: landscape) {
   .Space {
-    width: 70px;
-    height: 70px;
-    padding: 10px;
+    width: 25vh;
+    height: 25vh;
+    padding: 3vh;
+    border-width: 2vh;
   }
 }
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) and (min-height: 600px) {
+@media (orientation: portrait) {
   .Space {
-    width: 140px;
-    height: 140px;
-    padding: 20px;
-  }
-}
-
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 900px) and (min-height: 900px) {
-  .Space {
-    width: 200px;
-    height: 200px;
-    padding: 30px;
+    width: 25vw;
+    height: 25vw;
+    padding: 3vw;
+    border-width: 2vw;
   }
 }
