@@ -25,13 +25,12 @@ function Layout(props) {
         winner = null;
         break;
     }
-
     reset = <div className="Reset"><Fab color="primary" aria-label="add" onClick={props.dispatch}><ReplayIcon /></Fab></div >
   }
   const enabled = winner === undefined;
   return (
     <Container fixed>
-      <Grid spaces={props.marks} enabled={enabled} />
+      <Grid spaces={props.marks} winners={props.winners} enabled={enabled} />
       {reset}
     </Container>
   );
@@ -41,6 +40,7 @@ const mapStateToProps = (state) => {
   return {
     marks: state.marks,
     winner: state.winner,
+    winners: state.winners,
   }
 }
 

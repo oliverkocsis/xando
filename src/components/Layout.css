@@ -4,14 +4,6 @@ body,
   height: 100%;
 }
 
-.Winner {
-  margin: auto;
-  margin-top: 1em;
-  text-align: center;
-  width: 3em;
-  height: 3em;
-}
-
 .Reset {
   margin: 0;
   position: absolute;

@@ -12,6 +12,7 @@ export const TEST_ID = "Space";
 function Space(props) {
   const index = props.index;
   const mark = props.mark;
+  const winner = props.winner;
   const enabled = props.enabled;
   const display = displayMark(mark);
   const borderStyle = getBorderStyle(index);
@@ -22,7 +23,7 @@ function Space(props) {
     }
   }
 
-  return <div className="Space" data-testid={TEST_ID} style={borderStyle} onClick={onClick}>{display}</div>;
+  return <div className={`Space ${winner ? 'Winner' : ''}`} data-testid={TEST_ID} style={borderStyle} onClick={onClick}>{display}</div>;
 }
 
 function displayMark(mark) {
@@ -47,7 +48,7 @@ function getBorderStyle(index) {
       borderBottom: 'none',
     }
   }
-  if (index % 3 == 2) {
+  if (index % 3 === 2) {
     style = {
       ...style,
       borderRight: 'none',

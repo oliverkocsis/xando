@@ -4,6 +4,7 @@ export class Counter {
     this.width = width;
     this.height = height;
     this.countToWin = countToWin;
+    this.winnerIndex = [];
   }
 
   whoDidWinHorizontally() {
@@ -11,14 +12,17 @@ export class Counter {
       const index = this._calculateIndexFor(row, 0);
       let expected = this.spaces[index];
       let continuousCount = 1;
+      this.winnerIndex = [index];
       for (let column = 1; column < this.width; column++) {
         const index = this._calculateIndexFor(row, column);
         const current = this.spaces[index];
         if (expected === current) {
           continuousCount++;
+          this.winnerIndex.push(index);
         } else {
           expected = current;
           continuousCount = 1;
+          this.winnerIndex = [index];
         }
         if (continuousCount === this.countToWin) {
           return expected;
@@ -28,18 +32,22 @@ export class Counter {
   }
 
   whoDidWinVertically() {
+    this.winnerIndex = [];
     for (let column = 0; column < this.width; column++) {
       const index = this._calculateIndexFor(0, column);
       let expected = this.spaces[index];
       let continuousCount = 1;
+      this.winnerIndex = [index];
       for (let row = 1; row < this.height; row++) {
         const index = this._calculateIndexFor(row, column);
         const current = this.spaces[index];
         if (expected === current) {
           continuousCount++;
+          this.winnerIndex.push(index);
         } else {
           expected = current;
           continuousCount = 1;
+          this.winnerIndex = [index];
         }
         if (continuousCount === this.countToWin) {
           return expected;
@@ -55,8 +63,12 @@ export class Counter {
     const secondActual = this.spaces[second];
     const third = this._calculateIndexFor(2, 2);
     const thirdActual = this.spaces[third];
-    const won = (expected === secondActual && secondActual === thirdActual) ? expected : null;
-    return won;
+    if (expected === secondActual && secondActual === thirdActual) {
+      this.winnerIndex = [first, second, third];
+      return expected;
+    } else {
+      return null;
+    }
   }
 
   whoDidWinDiagonalBackward() {
@@ -66,8 +78,12 @@ export class Counter {
     const secondActual = this.spaces[second];
     const third = this._calculateIndexFor(2, 0);
     const thirdActual = this.spaces[third];
-    const won = (expected === secondActual && secondActual === thirdActual) ? expected : null;
-    return won;
+    if (expected === secondActual && secondActual === thirdActual) {
+      this.winnerIndex = [first, second, third];
+      return expected;
+    } else {
+      return null;
+    }
   }
 
   whoDidWin() {
@@ -89,6 +105,10 @@ export class Counter {
       return winner;
     }
     return null;
+  }
+
+  getWinnerIndexes() {
+    return this.winnerIndex;
   }
 
   _calculateIndexFor(row, column) {

@@ -14,6 +14,7 @@ describe('Counter', () => {
     ]
     const counter = new Counter(array, numberOfRows, numberOfColumns, countToWin);
     expect(counter.whoDidWinHorizontally()).toBe(1);
+    expect(counter.getWinnerIndexes()).toStrictEqual([0, 1, 2]);
   });
 
   test('vertically', () => {
@@ -24,6 +25,7 @@ describe('Counter', () => {
     ]
     const counter = new Counter(array, numberOfRows, numberOfColumns, countToWin);
     expect(counter.whoDidWinVertically()).toBe(1);
+    expect(counter.getWinnerIndexes()).toStrictEqual([0, 3, 6]);
   });
 
   test('forward diagonally', () => {
@@ -34,6 +36,7 @@ describe('Counter', () => {
     ]
     const counter = new Counter(array, numberOfRows, numberOfColumns, countToWin);
     expect(counter.whoDidWinDiagonalForward()).toBe(1);
+    expect(counter.getWinnerIndexes()).toStrictEqual([0, 4, 8]);
   });
 
   test('backward diagonally', () => {
@@ -44,6 +47,7 @@ describe('Counter', () => {
     ]
     const counter = new Counter(array, numberOfRows, numberOfColumns, countToWin);
     expect(counter.whoDidWinDiagonalBackward()).toBe(1);
+    expect(counter.getWinnerIndexes()).toStrictEqual([2, 4, 6]);
   });
 
 });

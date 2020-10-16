@@ -7,11 +7,13 @@ import analytics from '../analytics';
 const STATE_MARKS = 'marks';
 const STATE_MARK = 'mark';
 const STATE_WINNER = 'winner';
+const STATE_WINNERS = 'winners';
 
 export const initialState = {
   mark: marks.X,
   marks: new Array(9).fill(marks._),
   winner: null,
+  winners: new Array(9).fill(false),
 }
 
 export function reducer(state = initialState, action) {
@@ -48,9 +50,17 @@ function reduceMark(state, action) {
   const counter = new Counter(marksState.toArray(), 3, 3, 3);
   const winner = counter.whoDidWin();
   if (winner) {
+    const winnerIndexes = counter.getWinnerIndexes();
+    let winners = state.get(STATE_WINNERS);
+    for (const index of winnerIndexes) {
+      winners = winners.set(index, true);
+    }
     console.log(`winner: ${winner}`);
     analytics.logEvent('winner', { winner });
+    console.log(`winners: ${winners}`);
+    analytics.logEvent('winners', { winners });
     state = state.set(STATE_WINNER, winner);
+    state = state.set(STATE_WINNERS, winners);
   } else if (isFull(marksState)) {
     state = state.set(STATE_WINNER, marks._);
   }

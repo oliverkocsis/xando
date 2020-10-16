@@ -16,6 +16,10 @@
   animation: grow 0.25s ease-in;
 }
 
+.Winner .Mark {
+  animation: win 1.00s ease 0s infinite;
+}
+
 @keyframes grow {
   0% {
     transform: scale(0.00);
@@ -23,6 +27,20 @@
 
   75% {
     transform: scale(1.25);
+  }
+
+  100% {
+    transform: scale(1.00);
+  }
+}
+
+@keyframes win {
+  0% {
+    transform: scale(1.00);
+  }
+
+  50% {
+    transform: scale(0.75);
   }
 
   100% {
