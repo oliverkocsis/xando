@@ -6,8 +6,8 @@ import Fab from '@material-ui/core/Fab';
 import ReplayIcon from '@material-ui/icons/Replay';
 import * as actions from '../store/actions';
 import * as marks from '../game/marks';
-import X from './X';
-import O from './O';
+import X from './marks/X';
+import O from './marks/O';
 
 function Layout(props) {
   let winner;

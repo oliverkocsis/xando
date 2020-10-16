@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './Space.css';
-import X from './X';
-import O from './O';
-import _ from './_';
+import X from './marks/X';
+import O from './marks/O';
+import _ from './marks/_';
 import * as marks from '../game/marks';
 import * as actions from '../store/actions';
 

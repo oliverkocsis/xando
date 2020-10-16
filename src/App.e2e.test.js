@@ -2,8 +2,8 @@ import React from 'react';
 import { render, screen, fireEvent, getByTestId } from '@testing-library/react';
 import App from './App';
 import { TEST_ID } from './components/Space';
-import { TEST_ID as TEST_ID_X } from './components/X';
-import { TEST_ID as TEST_ID_O } from './components/O';
+import { TEST_ID as TEST_ID_X } from './components/marks/X';
+import { TEST_ID as TEST_ID_O } from './components/marks/O';
 
 describe('given the app is rendered', () => {
 
