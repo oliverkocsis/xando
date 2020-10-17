@@ -3,16 +3,13 @@ import { connect } from 'react-redux'
 import { Container } from '@material-ui/core';
 import './Layout.css';
 import Grid from './Grid';
-import Fab from '@material-ui/core/Fab';
-import ReplayIcon from '@material-ui/icons/Replay';
-import * as actions from '../store/actions';
+import Experiment from './Experiment';
 import * as marks from '../game/marks';
 import X from './marks/X';
 import O from './marks/O';
 
 function Layout(props) {
   let winner;
-  let reset;
   if (props.winner != null) {
     switch (props.winner) {
       case marks.X:
@@ -25,13 +22,12 @@ function Layout(props) {
         winner = null;
         break;
     }
-    reset = <div className="Reset"><Fab color="primary" aria-label="add" onClick={props.dispatch}><ReplayIcon /></Fab></div >
   }
   const enabled = winner === undefined;
   return (
     <Container fixed>
       <Grid spaces={props.marks} winners={props.winners} enabled={enabled} />
-      {reset}
+      <Experiment></Experiment>
     </Container>
   );
 }
@@ -44,8 +40,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-const actionCreators = {
-  dispatch: actions.reset,
-}
-
-export default connect(mapStateToProps, actionCreators)(Layout);
+export default connect(mapStateToProps, null)(Layout);

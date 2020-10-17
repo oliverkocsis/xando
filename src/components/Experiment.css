@@ -1,0 +1,23 @@
+.Experiment {
+  margin: 0;
+  position: absolute;
+  display: grid;
+}
+
+@media (orientation: landscape) {
+  .Experiment {
+    grid-template-columns: repeat(1, 1fr);
+    top: 50%;
+    left: 0%;
+    transform: translate(0%, -50%);
+  }
+}
+
+@media (orientation: portrait) {
+  .Experiment {
+    grid-template-columns: repeat(4, 1fr);
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+  }
+}
