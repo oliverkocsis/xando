@@ -1,0 +1,27 @@
+{
+  "name": "@xando/xando-lib",
+  "version": "0.0.1",
+  "description": "Xs and Os is a paper-and-pencil game for two players, X and O, who take turns marking the spaces in a 3×3 grid",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oliverkocsis/xando.git"
+  },
+  "keywords": [
+    "tictactoe",
+    "tic",
+    "tact",
+    "toe",
+    "x",
+    "o"
+  ],
+  "author": "Oliver Kocsis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/oliverkocsis/xando/issues"
+  },
+  "homepage": "https://github.com/oliverkocsis/xando#readme"
+}
